@@ -371,3 +371,111 @@ print(sum([1, 2, 3])) // Output: 6
 var array = [3, 2, 1]
 sort(&array)
 print(array) // Output: [1, 2, 3]
+
+
+// 1. Проверка четности числа:
+func checkEvenOdd(_ number: Int) -> String {
+    return number % 2 == 0 ? "Число \(number) - четное" : "Число \(number) - нечетное"
+}
+
+// 2. Проверка на палиндром:
+func isPalindrome(_ string: String) -> Bool {
+    let cleanString = string.lowercased().replacingOccurrences(of: " ", with: "")
+    return cleanString == String(cleanString.reversed())
+}
+
+// 3. Проверка числа на простоту:
+func isPrime(_ number: Int) -> Bool {
+    if number <= 1 {
+        return false
+    }
+    for i in 2..<number {
+        if number % i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+// 4. Проверка корректности даты:
+func isValidDate(_ date: String) -> Bool {
+    let dateFormatterGet = DateFormatter()
+    dateFormatterGet.dateFormat = "dd.MM.yyyy"
+    if dateFormatterGet.date(from: date) != nil {
+        return true
+    } else {
+        return false
+    }
+}
+
+// 5. Поиск совершенных чисел в заданном диапазоне:
+func findPerfectNumbers(inRange range: ClosedRange<Int>) -> [Int] {
+    var perfectNumbers = [Int]()
+    for number in range {
+        var sum = 0
+        for i in 1..<number {
+            if number % i == 0 {
+                sum += i
+            }
+        }
+        if sum == number {
+            perfectNumbers.append(number)
+        }
+    }
+    return perfectNumbers
+}
+
+// 6. Проверка числа на принадлежность к последовательности Фибоначчи:
+func isFibonacci(_ number: Int) -> Bool {
+    var a = 0, b = 1
+    while b < number {
+        let sum = a + b
+        a = b
+        b = sum
+    }
+    return b == number
+}
+
+// 7. Проверка числа на совершенство:
+func isPerfectNumber(_ number: Int) -> Bool {
+    var sum = 0
+    for i in 1..<number {
+        if number % i == 0 {
+            sum += i
+        }
+    }
+    return sum == number
+}
+
+// 8. Определение сезона года по дате:
+func getSeason(forDate date: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd.MM.yyyy"
+    guard let inputDate = dateFormatter.date(from: date) else {
+        return "Некорректная дата"
+    }
+    let calendar = Calendar.current
+    let month = calendar.component(.month, from: inputDate)
+    switch month {
+        case 12, 1, 2:
+            return "Зима"
+        case 3...5:
+            return "Весна"
+        case 6...8:
+            return "Лето"
+        case 9...11:
+            return "Осень"
+        default:
+            return "Неверный месяц"
+    }
+}
+
+// Тесты для всех задач:
+print("1. \(checkEvenOdd(5))")
+print("2. \"abba\" - Палиндром: \(isPalindrome("abba"))")
+print("3. Число 17 - Простое: \(isPrime(17))")
+print("4. Дата \"20.01.2002\" - Корректная: \(isValidDate("20.01.2002"))")
+print("5. Совершенные числа в диапазоне от 0 до 1000: \(findPerfectNumbers(inRange: 0...1000))")
+print("6. Число 25 - Число Фибоначчи: \(isFibonacci(25))")
+print("7. Число 28 - Совершенное число: \(isPerfectNumber(28))")
+print("8. Дата \"20.01.2002\" - Сезон года: \(getSeason(forDate: "20.01.2002"))")
