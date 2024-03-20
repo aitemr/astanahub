@@ -109,3 +109,24 @@ if let input = readLine(), let number = Int(input) {
 } else {
     print("Ошибка: Введите корректное целое число.")
 }
+
+// #7 Напишите программу, которая запрашивает у пользователя два числа и выводит на консоль большее из них. Sample Input: 8- 11 Sample Output: 11
+
+// Функция для определения большего из двух чисел
+func maxNumber(_ num1: Int, _ num2: Int) -> Int {
+    return max(num1, num2)
+}
+
+// Ввод двух чисел с клавиатуры
+print("Введите первое число:")
+if let input1 = readLine(), let number1 = Int(input1) {
+    print("Введите второе число:")
+    if let input2 = readLine(), let number2 = Int(input2) {
+        let result = maxNumber(number1, number2)
+        print("Большее число: \(result)")
+    } else {
+        print("Ошибка: Введите корректное второе число.")
+    }
+} else {
+    print("Ошибка: Введите корректное первое число.")
+}
