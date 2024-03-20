@@ -130,3 +130,98 @@ if let input1 = readLine(), let number1 = Int(input1) {
 } else {
     print("Ошибка: Введите корректное первое число.")
 }
+
+
+//1) sum-1-n Дается число n. Вернуть сумму от 1 до n без использования циклов. Ограничения 1 <= n <= 65535 Sample Input: 10 Sample Output: 55 2) Complete the Word Дан набор букв и слово и надо проверить можно ли собрать из этих букв данное слово. Нельзя убирать буквы но можно добавлять буквы. Пример: Sample Input: "butl" "beautiful" Sample Output: true 3) License Plate Путешествуя по Европе, необходимо обратить внимание на то, как отображается номерной знак в данной стране. При пересечении границы нужно припарковаться на обочине, открутить табличку, перегруппировать согласно местным правилам, прикрепить ее обратно и продолжить путь. Создайте решение, которое может форматировать номер DMV в номерной знак с правильной группировкой. Входные данные функции состоят из строки s и длины группы n. Вывод должен состоять из символов и цифр верхнего регистра. Новые группы создаются справа налево и соединяются знаком -. Исходный порядок номеров DMV сохранен. Sample Input: 5F3Z-2e-9-w 4 Sample Output: 5F3Z-2E9W 4) digit Дается число a. Вывести в консоль цифру в середине в числе. Если в числе нет цифры по середине надо взять цифру слева Пример цифра в середине у числа 678 - это 7. Ограничения Запрещено использовать тип String a > 9 Sample Input: 678 Sample Output: 7
+
+// Сумма от 1 до n без использования циклов:
+
+
+func sumUpToN(_ n: Int) -> Int {
+    return n * (n + 1) / 2
+}
+
+let n = 10
+let result2 = sumUpToN(n)
+print(result2)
+
+// Проверка возможности составить слово из набора букв:
+
+func canConstruct(_ letters: String, _ word: String) -> Bool {
+    var letterCount = [Character: Int]()
+    for letter in letters {
+        letterCount[letter, default: 0] += 1
+    }
+    
+    for char in word {
+        if let count = letterCount[char], count > 0 {
+            letterCount[char] = count - 1
+        } else {
+            return false
+        }
+    }
+    
+    return true
+}
+
+let letters = "butl"
+let word = "beautiful"
+let result3 = canConstruct(letters, word)
+print(result3)
+
+// Форматирование номерного знака:
+
+func formatLicensePlate(_ s: String, _ n: Int) -> String {
+    let filteredString = s.filter { $0 != "-" }
+    var formattedString = ""
+    var counter = 0
+    
+    for char in filteredString.reversed() {
+        if counter == n {
+            formattedString.insert("-", at: formattedString.startIndex)
+            counter = 0
+        }
+        formattedString.insert(char, at: formattedString.startIndex)
+        counter += 1
+    }
+    
+    return formattedString.uppercased()
+}
+
+let s = "5F3Z-2e-9-w"
+let x = 4
+let result4 = formatLicensePlate(s, x)
+print(result4)
+
+
+// Цифра в середине числа:
+
+func middleDigit(_ number: Int) -> Int {
+    var num = number
+    var digitsCount = 0
+    
+    while num > 0 {
+        digitsCount += 1
+        num /= 10
+    }
+    
+    num = number
+    var middleDigit = 0
+    var middleIndex = digitsCount / 2
+    
+    if digitsCount % 2 == 0 {
+        middleIndex -= 1
+    }
+    
+    for _ in 0..<middleIndex {
+        middleDigit = num % 10
+        num /= 10
+    }
+    
+    return middleDigit
+}
+
+let number = 678
+let result5 = middleDigit(number)
+print(result5)
+
