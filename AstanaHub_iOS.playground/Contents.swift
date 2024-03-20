@@ -273,3 +273,101 @@ print("Задача 5:")
 for (index, letter) in letters2.enumerated() {
     print("\(index): \(letter)")
 }
+
+// Comparison Function
+func compareNumbers(_ a: Int, _ b: Int) -> Int {
+    if a > b {
+        return 1
+    } else if a < b {
+        return -1
+    } else {
+        return 0
+    }
+}
+
+// Max of Three Numbers
+func maxOfThree(_ a: Int, _ b: Int, _ c: Int) -> Int {
+    return max(a, max(b, c))
+}
+
+// Sum of Squares from 1 to n
+func sumOfSquares(_ n: Int) -> Int {
+    return (n * (n + 1) * (2 * n + 1)) / 6
+}
+
+// Print Even Numbers in a Range
+func printEvenNumbers(_ a: Int, _ b: Int) {
+    for num in a...b {
+        if num % 2 == 0 {
+            print(num, terminator: " ")
+        }
+    }
+}
+
+// Power Function
+func power(_ a: Int, _ b: Int) -> Int {
+    var result = 1
+    for _ in 0..<b {
+        result *= a
+    }
+    return result
+}
+
+// Calculate Deposit Function
+func calculateDeposit(_ n: Int, _ k: Double, _ b: Double) -> Double {
+    let interest = (k / 100) * b
+    return b + (Double(n) * interest)
+}
+
+// Min Function for Arrays
+func min(_ array: [Int]) -> Int {
+    return array.min() ?? 0
+}
+
+// Range Function for Arrays
+func range(_ n: Int) -> [Int] {
+    return Array(1...n)
+}
+
+// Sum Function for Arrays
+func sum(_ array: [Int]) -> Int {
+    return array.reduce(0, +)
+}
+
+// Sort Function for Arrays
+func sort(_ array: inout [Int]) {
+    for i in 0..<array.count {
+        for j in i+1..<array.count {
+            if array[i] > array[j] {
+                let temp = array[i]
+                array[i] = array[j]
+                array[j] = temp
+            }
+        }
+    }
+}
+
+// Test the functions with sample inputs
+
+print(compareNumbers(1, 0)) // Output: 1
+
+print(maxOfThree(42, 1, 0)) // Output: 42
+
+print(sumOfSquares(3)) // Output: 14
+
+printEvenNumbers(0, 4) // Output: 0 2 4
+
+print(power(2, 6)) // Output: 64
+
+print(calculateDeposit(1, 5, 1000)) // Output: 1050.0
+
+print(min([1, 2, 3])) // Output: 1
+
+let arr = range(5)
+print(arr) // Output: [1, 2, 3, 4, 5]
+
+print(sum([1, 2, 3])) // Output: 6
+
+var array = [3, 2, 1]
+sort(&array)
+print(array) // Output: [1, 2, 3]
