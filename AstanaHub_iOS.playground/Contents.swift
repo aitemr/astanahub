@@ -225,3 +225,51 @@ let number = 678
 let result5 = middleDigit(number)
 print(result5)
 
+// Допишите цикл так чтобы вывести все имена согласно ниже тестам Sample Input: Sample Output: Hello, Anna! Hello, Alex! Hello, Brian! Hello, Jack! Допишите цикл так чтобы вывести все имена согласно ниже тестам Sample Input: Sample Output: cats have 4 legs spiders have 8 legs ants have 6 legs Допишите цикл так чтобы вывести 3 в 10-й степени. Sample Input: Sample Output: 3 to the power of 10 is 59049 Допишите цикл так чтобы вывести все буквы согласно ниже тестам Sample Input: Sample Output: The letter is A The letter is S The letter is T The letter is A The letter is N The letter is A Напишите программу, которая выведет как индекс, так и значение числа. Sample Input: Sample Output: 0: A 1: B 2: C 3: D
+
+// Задача 1: Вывести все имена
+let names = ["Anna", "Alex", "Brian", "Jack"]
+
+print("Задача 1:")
+for name in names {
+    print("Hello, \(name)!")
+}
+print()
+
+// Задача 2: Вывести информацию о количестве ног у животных
+let animals = ["cats": 4, "spiders": 8, "ants": 6]
+
+print("Задача 2:")
+for (animal, legs) in animals {
+    print("\(animal) have \(legs) legs")
+}
+print()
+
+// Задача 3: Возвести число в 10-ю степень
+let base = 3
+var result = 1
+
+for _ in 1...10 {
+    result *= base
+}
+
+print("Задача 3:")
+print("\(base) to the power of 10 is \(result)")
+print()
+
+// Задача 4: Вывести все буквы из заданной строки
+let word1 = "ASTANA"
+
+print("Задача 4:")
+for letter in word1 {
+    print("The letter is \(letter)")
+}
+print()
+
+// Задача 5: Вывести индекс и значение элементов
+let letters2 = ["A", "B", "C", "D"]
+
+print("Задача 5:")
+for (index, letter) in letters2.enumerated() {
+    print("\(index): \(letter)")
+}
