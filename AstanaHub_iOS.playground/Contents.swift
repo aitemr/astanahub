@@ -1,3 +1,5 @@
+import Foundation
+
 // #1 Задание констант
 let const1 = 100
 let const2 = 100
@@ -34,4 +36,29 @@ if let input = readLine(), let number = Int(input) {
     print("Результат: \(result)")
 } else {
     print("Ошибка: Введите корректное целое число.")
+}
+
+// #4 Напишите программу, которая запрашивает у пользователя день недели и выводит на консоль номер этого дня. Sample Input: понедельник Sample Output: 1
+
+// Функция для определения номера дня недели
+func getDayNumber(_ day: String) -> Int? {
+    let daysOfWeek = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"]
+    
+    if let index = daysOfWeek.firstIndex(where: { $0.caseInsensitiveCompare(day) == .orderedSame }) {
+        return index + 1 // Нумерация дней начинается с 1
+    } else {
+        return nil // Возвращаем nil, если день недели не найден
+    }
+}
+
+// Ввод дня недели с клавиатуры
+print("Введите день недели:")
+if let input = readLine() {
+    if let dayNumber = getDayNumber(input) {
+        print("Номер дня недели: \(dayNumber)")
+    } else {
+        print("Ошибка: Некорректное название дня недели.")
+    }
+} else {
+    print("Ошибка: Введите название дня недели.")
 }
