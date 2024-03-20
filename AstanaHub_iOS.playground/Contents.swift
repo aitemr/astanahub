@@ -62,3 +62,29 @@ if let input = readLine() {
 } else {
     print("Ошибка: Введите название дня недели.")
 }
+
+// #5 Напишите программу, которая выводит на консоль скидку для покупателя в зависимости от суммы его покупки. Если стоимость от 0 до 1000 скидка 0% Если стоимость от 1000 до 5000 скидка 5% Если стоимость от 5001 до 10000 скидка 10% если более то скидка 15% Sample Input: 20 Sample Output: 0
+
+// Функция для определения скидки в зависимости от суммы покупки
+func calculateDiscount(_ amount: Double) -> Double {
+    if amount >= 0 && amount <= 1000 {
+        return 0
+    } else if amount > 1000 && amount <= 5000 {
+        return 0.05
+    } else if amount > 5000 && amount <= 10000 {
+        return 0.1
+    } else {
+        return 0.15
+    }
+}
+
+
+// Ввод стоимости покупки с клавиатуры
+print("Введите сумму покупки:")
+if let input = readLine(), let amount = Double(input) {
+    let discount = calculateDiscount(amount)
+    let discountPercentage = discount * 100
+    print("Скидка: \(discountPercentage)%")
+} else {
+    print("Ошибка: Введите корректную сумму покупки.")
+}
