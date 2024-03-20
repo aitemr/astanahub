@@ -21,7 +21,7 @@ print(footballerName)
 
 // #3 Напишите программу, которая определяет, является ли введенное пользователем число четным или нечетным. если число четное написать 0 если число нечетное написать 1 Sample Input: 8 Sample Output: 0
 
-func checkEvenOdd(_ number: Int) -> Int {
+func checkEvenOdd2(_ number: Int) -> Int {
     if number % 2 == 0 {
         return 0 // Четное число
     } else {
@@ -479,3 +479,56 @@ print("5. Совершенные числа в диапазоне от 0 до 10
 print("6. Число 25 - Число Фибоначчи: \(isFibonacci(25))")
 print("7. Число 28 - Совершенное число: \(isPerfectNumber(28))")
 print("8. Дата \"20.01.2002\" - Сезон года: \(getSeason(forDate: "20.01.2002"))")
+
+
+func sumOneToN(_ n: Int) -> Int {
+    return (n * (n + 1)) / 2
+}
+
+func countLeapYear(_ n: Int) -> Int {
+    return n / 4 - n / 100 + n / 400
+}
+
+func swapBits(_ a: Int) -> Int {
+    return ((a & 0b1111) << 4) | ((a & 0b11110000) >> 4)
+}
+
+func sortNumsThree(_ a: Int, _ b: Int, _ c: Int) {
+    let sortedArray = [a, b, c].sorted()
+    print(sortedArray)
+}
+
+func median(_ array: [Int]) -> Int {
+    let sortedArray = array.sorted()
+    let mid = array.count / 2
+    return array.count % 2 == 0 ? sortedArray[mid - 1] : sortedArray[mid]
+}
+
+func missYou(_ array1: [Int], _ array2: [Int]) -> [Int] {
+    let set1 = Set(array1)
+    let set2 = Set(array2)
+    return Array(set2.subtracting(set1)).sorted()
+}
+
+func perfectlyBalanced(_ array: [Int]) -> Bool {
+    let totalSum = array.reduce(0, +)
+    var leftSum = 0
+    for num in array {
+        if leftSum == totalSum - leftSum - num {
+            return true
+        }
+        leftSum += num
+    }
+    return false
+}
+
+func stockBuy(_ m: Int, _ s: [Int]) -> [Int] {
+    for i in 0..<s.count {
+        for j in i+1..<s.count {
+            if s[i] + s[j] == m {
+                return [i, j].sorted()
+            }
+        }
+    }
+    return []
+}
