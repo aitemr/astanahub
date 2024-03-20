@@ -88,3 +88,24 @@ if let input = readLine(), let amount = Double(input) {
 } else {
     print("Ошибка: Введите корректную сумму покупки.")
 }
+
+
+// #6 last-digit Дается число a. Вывести в консоль последнюю цифру в числе. Пример Последняя цифра у числа 78 - это 8. Ограничения Запрещено использовать тип String a > 0 Sample Input: 78 Sample Output: 8
+
+// Функция для определения последней цифры числа
+func getLastDigit(_ number: Int) -> Int {
+    return abs(number) % 10
+}
+
+// Ввод числа с клавиатуры
+print("Введите число:")
+if let input = readLine(), let number = Int(input) {
+    if number > 0 {
+        let lastDigit = getLastDigit(number)
+        print("Последняя цифра у числа \(number) - это \(lastDigit).")
+    } else {
+        print("Ошибка: Введите положительное число.")
+    }
+} else {
+    print("Ошибка: Введите корректное целое число.")
+}
